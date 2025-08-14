@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tables – ClubSocial Poker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .wrap{max-width:1200px;margin:0 auto;padding:18px 16px 64px}
+    .crumbs{display:flex;gap:10px;color:var(--muted);margin:6px 0 14px}
+    .crumbs a{color:#fff;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.25)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .toolbar .pill, .toolbar select{
+      background:var(--panel-2); border:1px solid rgba(255,255,255,.08); color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .toolbar .pill.active{background:linear-gradient(90deg, rgba(143,91,255,.22), rgba(21,225,167,.18))}
+    .tbl{
+      width:100%; border-collapse:separate; border-spacing:0 10px;
+    }
+    .tbl thead th{font-weight:600; text-align:left; color:var(--muted); padding:0 10px}
+    .row{
+      background:var(--card); outline:1px solid rgba(255,255,255,.06);
+      border-radius:12px; box-shadow:var(--glow);
+    }
+    .row td{padding:12px 10px; vertical-align:middle}
+    .seats{display:flex; gap:6px; flex-wrap:wrap}
+    .seat{
+      padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.10);
+      background:var(--panel-2); color:#fff; font-size:12px; cursor:pointer;
+    }
+    .seat.taken{background:#2a2f4a; color:var(--muted); cursor:not-allowed}
+    .badge-soft{padding:4px 10px;border-radius:999px;background:var(--panel-2);border:1px solid rgba(255,255,255,.08); font-size:12px}
+    .right{display:flex; gap:8px; justify-content:flex-end; align-items:center}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ClubSocial</div>
+    <div class="balance">
+      <span id="activeBalanceAmount">50.00</span>
+      <button id="balanceDropdown" class="dropdown-btn">GC ▾</button>
+      <ul id="balanceMenu" class="dropdown-menu">
+        <li data-currency="GC">GoldCoin (GC)</li>
+        <li data-currency="SC">SweepsCoin (SC)</li>
+        <li data-currency="TRPZ">$TRPZ</li>
+      </ul>
+    </div>
+    <nav class="top-actions">
+      <button class="pill" onclick="location.href='poker.html'">Poker</button>
+      <button class="pill" onclick="location.href='index.html'">Home</button>
+      <div class="avatar" aria-label="Profile"></div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs">
+      <a href="index.html">Home</a> › <a href="poker.html">Poker</a> › <strong>Tables</strong>
+    </nav>
+
+    <!-- Toolbar -->
+    <section class="toolbar">
+      <div class="pill" id="gcBtn">GC</div>
+      <div class="pill" id="scBtn">SC</div>
+
+      <div class="pill" id="holdemBtn">Hold’em</div>
+      <div class="pill" id="omahaBtn">Omaha Hi/Lo</div>
+      <div class="pill" id="roeBtn">R.O.E.</div>
+
+      <select id="stakesSelect" aria-label="Stakes">
+        <option value="all">All Stakes</option>
+        <option value="micro">Micro</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+
+      <select id="maxPlayersSelect" aria-label="Max Players">
+        <option value="all">6 & 9-max</option>
+        <option value="6">6-max</option>
+        <option value="9">9-max</option>
+      </select>
+
+      <input id="searchInput" placeholder="Search table…" style="flex:1;min-width:160px;background:var(--panel-2);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;color:#fff">
+    </section>
+
+    <!-- Table list -->
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Table</th>
+          <th>Blinds</th>
+          <th>Buy-in</th>
+          <th>Type</th>
+          <th>Seats</th>
+          <th class="right">Action</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- injected -->
+      </tbody>
+    </table>
+
+    <div style="margin-top:10px" class="muted">Tip: click an empty seat to join directly, or “View Table” to open the room.</div>
+  </main>
+
+  <footer class="site-footer">© <span id="year"></span> TerpzyVerse / ClubSocial</footer>
+
+  <script src="./table-list.js"></script>
+</body>
+</html>

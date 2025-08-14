@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Play – ClubSocial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* tiny page-specific helpers */
+    .play-wrap{max-width:1200px;margin:0 auto;padding:18px 16px 48px}
+    .crumbs{display:flex;align-items:center;gap:10px;color:var(--muted);margin:4px 0 14px}
+    .crumbs a{color:#fff;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.25)}
+    .game-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .game-meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted)}
+    .badge-soft{padding:4px 10px;border-radius:999px;background:var(--panel-2);border:1px solid rgba(255,255,255,.08)}
+    .frame-shell{
+      background:var(--panel); outline:1px solid rgba(255,255,255,.06); border-radius:16px;
+      box-shadow:var(--glow); overflow:hidden;
+    }
+    .frame-16x9{position:relative;width:100%;padding-top:56.25%}
+    .frame-16x9 iframe{position:absolute;inset:0;border:0;width:100%;height:100%}
+    .frame-actions{display:flex;gap:8px;margin-top:10px}
+    .btn{background:var(--panel-2);border:1px solid rgba(255,255,255,.08);color:#fff;border-radius:10px;padding:10px 12px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <!-- Top Bar (same look) -->
+  <header class="topbar">
+    <div class="brand">ClubSocial</div>
+    <div class="balance">
+      <span id="activeBalanceAmount">50.00</span>
+      <button id="balanceDropdown" class="dropdown-btn">GC ▾</button>
+      <ul id="balanceMenu" class="dropdown-menu">
+        <li data-currency="GC">GoldCoin (GC)</li>
+        <li data-currency="SC">SweepsCoin (SC)</li>
+        <li data-currency="TRPZ">$TRPZ</li>
+      </ul>
+    </div>
+    <nav class="top-actions">
+      <button class="pill" onclick="window.location.href='index.html'">Home</button>
+      <div class="avatar" aria-label="Profile"></div>
+    </nav>
+  </header>
+
+  <main class="play-wrap">
+    <nav class="crumbs">
+      <a href="index.html">Home</a> › <span id="crumbProvider">Provider</span> › <strong id="crumbGame">Game</strong>
+    </nav>
+
+    <header class="game-head">
+      <h1 id="gameTitle" style="margin:0;font-size:20px;">Loading…</h1>
+      <div class="game-meta">
+        <span class="badge-soft" id="metaProvider"></span>
+        <span class="badge-soft" id="metaMode">Real Mode</span>
+      </div>
+    </header>
+
+    <section class="frame-shell">
+      <div class="frame-16x9">
+        <iframe id="gameFrame" allow="autoplay; fullscreen"></iframe>
+      </div>
+    </section>
+
+    <div class="frame-actions">
+      <button class="btn" id="switchDemo">Switch to Demo</button>
+      <button class="btn" id="reloadBtn">Reload</button>
+      <button class="btn" id="backBtn">Back</button>
+    </div>
+  </main>
+
+  <script src="./play.js"></script>
+</body>
+</html>

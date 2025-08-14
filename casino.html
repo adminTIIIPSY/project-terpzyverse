@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Casino – ClubSocial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .wrap{max-width:1200px;margin:0 auto;padding:18px 16px 64px}
+    .crumbs{display:flex;gap:10px;color:var(--muted);margin:6px 0 14px}
+    .crumbs a{color:#fff;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.25)}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ClubSocial</div>
+    <div class="balance">
+      <span id="activeBalanceAmount">50.00</span>
+      <button id="balanceDropdown" class="dropdown-btn">GC ▾</button>
+      <ul id="balanceMenu" class="dropdown-menu">
+        <li data-currency="GC">GoldCoin (GC)</li>
+        <li data-currency="SC">SweepsCoin (SC)</li>
+        <li data-currency="TRPZ">$TRPZ</li>
+      </ul>
+    </div>
+    <nav class="top-actions">
+      <button class="pill" onclick="location.href='index.html'">Home</button>
+      <div class="avatar" aria-label="Profile"></div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs"><a href="index.html">Home</a> › <strong>Casino</strong></nav>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Featured Casino</h2>
+        <div class="row-controls">
+          <button class="nav-btn" data-target="featRow" data-dir="left">‹</button>
+          <button class="nav-btn" data-target="featRow" data-dir="right">›</button>
+        </div>
+      </div>
+      <div class="cards-row scroll-x" id="featRow"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h3>All Slots</h3>
+        <div class="filters">
+          <input id="searchInput" placeholder="Search by name…" />
+          <select id="sortSelect">
+            <option value="popular">Popular</option>
+            <option value="new">New</option>
+            <option value="rtp">RTP</option>
+            <option value="volatility">Volatility</option>
+          </select>
+          <select id="tagSelect">
+            <option value="">All Tags</option>
+            <option>Bonus Buy</option>
+            <option>Megaways</option>
+            <option>Cluster</option>
+            <option>Hold&Spin</option>
+            <option>Jackpot</option>
+          </select>
+        </div>
+      </div>
+      <div id="grid" class="grid"></div>
+      <div class="load-more"><button id="loadMore">Load more</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">© <span id="year"></span> TerpzyVerse / ClubSocial</footer>
+
+  <script>window.CATEGORY="CASINO";</script>
+  <script src="./category.js"></script>
+</body>
+</html>
